@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Amiibo Final Project</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="navigation">
+        <item>Home</item>
+        <item>News</item>
+        <item>All the amiibos</item>
+    </string-array>
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_another">AnotherActivity</string>
+    <string name="title_activity_feed">Amiibo News</string>
+    <string name="title_activity_amiibos">AmiibosActivity</string>
+</resources>
