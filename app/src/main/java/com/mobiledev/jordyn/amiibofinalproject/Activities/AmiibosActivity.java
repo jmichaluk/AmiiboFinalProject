@@ -39,13 +39,6 @@ public class AmiibosActivity extends DrawerActivity {
         LayoutInflater layoutInflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View activityView = layoutInflater.inflate(R.layout.activity_amiibos, null, false);
         frameLayout.addView(activityView);
-//
-//        amiiboGrid = (GridView) findViewById(R.id.amiibo_grid);
-//        amiibos = new ArrayList<Amiibo>();
-//        ArrayAdapter<Amiibo> adapter = new ArrayAdapter<Amiibo>(this, R.layout.amiibo_list_item, amiibos);
-//        amiiboGrid.setAdapter(adapter);
-//
-//        refreshPostList();
 
         new RemoteDataTask().execute();
     }
@@ -66,6 +59,7 @@ public class AmiibosActivity extends DrawerActivity {
             amiiboArrayList = new ArrayList<Amiibo>();
             try {
                 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Amiibos");
+                query.orderByAscending("position");
                 object = query.find();
                 for (ParseObject amiibo : object) {
                     Log.d("jordyntest", "Amiibo found");
@@ -73,8 +67,10 @@ public class AmiibosActivity extends DrawerActivity {
                         ParseFile image = (ParseFile) amiibo.get("Image_URL");
                         Amiibo map = new Amiibo();
                         map.setAmiibo(image.getUrl());
+                        map.setName((String) amiibo.get("Name"));
                         amiiboArrayList.add(map);
                     } catch (NullPointerException e) {
+                        Log.e("Error", "No image found");
                         e.printStackTrace();
                     }
                 }
@@ -88,11 +84,17 @@ public class AmiibosActivity extends DrawerActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            Log.d("JordynTest", "Do I get here?");
             amiiboGrid = (GridView) findViewById(R.id.amiibo_grid);
+            Log.d("JordynTest", "Amiibo grid found");
             adapter = new GridViewAdapter(AmiibosActivity.this, amiiboArrayList);
+            Log.d("JordynTest", "Adapter created");
             amiiboGrid.setAdapter(adapter);
+            Log.d("JordynTest", "Adapter set");
 
-
+            if (mProgressDialog != null && mProgressDialog.isShowing()) {
+                mProgressDialog.dismiss();
+            }
         }
     }
 
@@ -107,7 +109,7 @@ public class AmiibosActivity extends DrawerActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+        // as you specify a parent Activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -117,28 +119,4 @@ public class AmiibosActivity extends DrawerActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-//    private void refreshPostList() {
-//        ParseQuery<ParseObject> query = ParseQuery.getQuery("Amiibos");
-//
-//        query.findInBackground(new FindCallback<ParseObject>() {
-//
-//            @Override
-//            public void done(List<ParseObject> list, ParseException e) {
-//                if (e == null) {
-//                    amiibos.clear();
-//                    for (ParseObject amiibo : list) {
-//                        Amiibo amiiboObject = new Amiibo(amiibo.getObjectId(), amiibo.getString("Name"), amiibo.getString("Description"), amiibo.getParseFile("Image_URL"));
-//                        ParseFile image = (ParseFile) amiibo.get("Image_URL");
-//                        amiiboObject.setImageURL(image);
-//                        amiibos.add(amiiboObject);
-//
-//                    }
-//                    ((ArrayAdapter<Amiibo>) amiiboGrid.getAdapter()).notifyDataSetChanged();
-//                } else {
-//                    Log.d(getClass().getSimpleName(), "Error: " + e.getMessage());
-//                }
-//            }
-//        });
-//    }
 }

@@ -4,7 +4,10 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.ImageView;
+
+import com.mobiledev.jordyn.amiibofinalproject.Activities.AmiibosActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -38,7 +41,7 @@ public class ImageLoader {
         executorService = Executors.newFixedThreadPool(5);
     }
 
-    //final int stub_id = R.drawable.temp_img;
+    final int stub_id = R.drawable.temp_img;
 
     public void DisplayImage(String url, ImageView imageView) {
         imageViews.put(imageView, url);
@@ -47,13 +50,14 @@ public class ImageLoader {
             imageView.setImageBitmap(bitmap);
         else {
             queuePhoto(url, imageView);
-            //imageView.setImageResource(stub_id);
+            imageView.setImageResource(stub_id);
         }
     }
 
     private void queuePhoto(String url, ImageView imageView) {
         PhotoToLoad p = new PhotoToLoad(url, imageView);
         executorService.submit(new PhotosLoader(p));
+        Log.d("JordynTest", "Loading image");
     }
 
     private Bitmap getBitmap(String url) {

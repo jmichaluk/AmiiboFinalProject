@@ -9,6 +9,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,63 +17,31 @@ import java.util.List;
  */
 public class Amiibo {
 
+    private String name;
+    private Date releaseDate;
     private String amiibo;
+
     public String getAmiibo() {
         return amiibo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public void setAmiibo(String amiibo) {
         this.amiibo = amiibo;
     }
 }
-//    private String id;
-//    private String name;
-//    private String description;
-//    private ParseFile image_url;
-//
-//    Amiibo(String id, String name, String description, ParseFile image_url) {
-//        this.id = id;
-//        this.name = name;
-//        this.description = description;
-//        this.image_url = image_url;
-//    }
-//
-//    public String getId() {
-//        return id;
-//    }
-//
-//    public void setId(String id) {
-//        this.id = id;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public String getDescription() {
-//        return description;
-//    }
-//
-//    public void setDescription(String description) {
-//        this.description = description;
-//    }
-//
-//    public ParseFile getImageURL() {
-//        return image_url;
-//    }
-//
-//    public void setImageURL(ParseFile image_url) {
-//        this.image_url = image_url;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return this.getName();
-//    }
-//
-//
-//}
