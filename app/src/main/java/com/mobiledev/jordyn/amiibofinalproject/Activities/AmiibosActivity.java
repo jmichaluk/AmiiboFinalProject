@@ -13,7 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.GridView;
 
 import com.mobiledev.jordyn.amiibofinalproject.Models.Amiibo;
-import com.mobiledev.jordyn.amiibofinalproject.Adapters.GridViewAdapter;
+import com.mobiledev.jordyn.amiibofinalproject.Adapters.AmiiboAdapter;
 import com.mobiledev.jordyn.amiibofinalproject.R;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -28,7 +28,7 @@ public class AmiibosActivity extends DrawerActivity {
     private GridView amiiboGrid;
     private List<ParseObject> object;
     ProgressDialog mProgressDialog;
-    GridViewAdapter adapter;
+    AmiiboAdapter adapter;
     private List<Amiibo> amiiboArrayList = null;
 
     @Override
@@ -66,8 +66,10 @@ public class AmiibosActivity extends DrawerActivity {
                     try {
                         ParseFile image = (ParseFile) amiibo.get("Image_URL");
                         Amiibo map = new Amiibo();
-                        map.setAmiibo(image.getUrl());
+                        map.setAmiiboImage(image.getUrl());
                         map.setName((String) amiibo.get("Name"));
+                        map.setAmiiboID((String) amiibo.get("objectID"));
+                        map.setDescription((String) amiibo.get("Description"));
                         amiiboArrayList.add(map);
                     } catch (NullPointerException e) {
                         Log.e("Error", "No image found");
@@ -87,7 +89,7 @@ public class AmiibosActivity extends DrawerActivity {
             Log.d("JordynTest", "Do I get here?");
             amiiboGrid = (GridView) findViewById(R.id.amiibo_grid);
             Log.d("JordynTest", "Amiibo grid found");
-            adapter = new GridViewAdapter(AmiibosActivity.this, amiiboArrayList);
+            adapter = new AmiiboAdapter(AmiibosActivity.this, amiiboArrayList);
             Log.d("JordynTest", "Adapter created");
             amiiboGrid.setAdapter(adapter);
             Log.d("JordynTest", "Adapter set");

@@ -2,7 +2,6 @@ package com.mobiledev.jordyn.amiibofinalproject.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,7 @@ import java.util.List;
 /**
  * Created by Jordyn on 2015-11-09.
  */
-public class GridViewAdapter extends BaseAdapter{
+public class AmiiboAdapter extends BaseAdapter{
 
     Context context;
     LayoutInflater inflater;
@@ -29,7 +28,7 @@ public class GridViewAdapter extends BaseAdapter{
     private ArrayList<Amiibo> arrayList;
     int position;
 
-    public GridViewAdapter(Context context, List<Amiibo> amiiboArrayList) {
+    public AmiiboAdapter(Context context, List<Amiibo> amiiboArrayList) {
         this.context = context;
         this.amiiboArrayList = amiiboArrayList;
         inflater = LayoutInflater.from(context);
@@ -63,21 +62,23 @@ public class GridViewAdapter extends BaseAdapter{
         if (view == null) {
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.amiibo_list_item, null);
-            holder.amiibo = (ImageView) view.findViewById(R.id.amiibo_img);
+            holder.amiibo = (ImageView) view.findViewById(R.id.img);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
 
-        imageLoader.DisplayImage(amiiboArrayList.get(position).getAmiibo(), holder.amiibo);
+        imageLoader.DisplayImage(amiiboArrayList.get(position).getAmiiboImage(), holder.amiibo);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, SingleItemActivity.class);
 
-                intent.putExtra("amiibo", amiiboArrayList.get(position).getAmiibo());
+                intent.putExtra("amiiboID", amiiboArrayList.get(position).getAmiiboID());
+                intent.putExtra("image", amiiboArrayList.get(position).getAmiiboImage());
                 intent.putExtra("name", amiiboArrayList.get(position).getName());
+                intent.putExtra("description", amiiboArrayList.get(position).getDescription());
                 context.startActivity(intent);
             }
         });

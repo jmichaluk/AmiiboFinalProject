@@ -57,7 +57,6 @@ public class ImageLoader {
     private void queuePhoto(String url, ImageView imageView) {
         PhotoToLoad p = new PhotoToLoad(url, imageView);
         executorService.submit(new PhotosLoader(p));
-        Log.d("JordynTest", "Loading image");
     }
 
     private Bitmap getBitmap(String url) {

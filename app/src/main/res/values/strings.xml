@@ -8,6 +8,7 @@
         <item>Home</item>
         <item>News</item>
         <item>All the amiibos</item>
+        <item>Games</item>
     </string-array>
 
     <string name="drawer_open">Open</string>

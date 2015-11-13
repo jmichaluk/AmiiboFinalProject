@@ -1,11 +1,9 @@
 package com.mobiledev.jordyn.amiibofinalproject.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -13,11 +11,19 @@ import android.widget.TextView;
 
 import com.mobiledev.jordyn.amiibofinalproject.ImageLoader;
 import com.mobiledev.jordyn.amiibofinalproject.R;
+import com.parse.FindCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.text.ParseException;
+import java.util.List;
 
 public class SingleItemActivity extends DrawerActivity {
 
     String image;
     String name;
+    String amiiboID;
+    String description;
     ImageLoader imageLoader = new ImageLoader(this);
 
 
@@ -35,12 +41,33 @@ public class SingleItemActivity extends DrawerActivity {
         TextView nameView = (TextView) findViewById(R.id.amiibo_name);
 
         Intent i = getIntent();
-        image = i.getStringExtra("amiibo");
+        amiiboID = i.getStringExtra("amiiboID");
+        image = i.getStringExtra("image");
         name = i.getStringExtra("name");
+        description = i.getStringExtra("description");
 
         ImageView amiiboimg = (ImageView) findViewById(R.id.amiibo_img);
 
         nameView.setText(name);
         imageLoader.DisplayImage(image, amiiboimg);
+
+        TextView descriptionView = (TextView) findViewById(R.id.amiibo_description);
+        descriptionView.setText(description);
+
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("AmiiboGames");
+        query.whereEqualTo("amiiboID", amiiboID);
+
+        query.findInBackground(new FindCallback<ParseObject>() {
+
+            @Override
+            public void done(List<ParseObject> list, com.parse.ParseException e) {
+                if (e == null) {
+                    Log.d("JordynTest", "I think a game was found?");
+                } else {
+                    Log.e("JordynTest", "No games found... Something must be wrong.");
+                }
+            }
+        });
+
     }
 }

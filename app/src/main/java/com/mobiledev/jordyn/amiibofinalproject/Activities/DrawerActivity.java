@@ -108,6 +108,11 @@ public class DrawerActivity extends Activity implements AdapterView.OnItemClickL
                 startActivity(intent);
                 break;
             }
+            case 3: {
+                Intent intent = new Intent(this, GamesActivity.class);
+                startActivity(intent);
+                break;
+            }
             default: {
                 break;
             }
