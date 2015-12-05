@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,7 +17,7 @@ import android.widget.ListView;
 
 import com.mobiledev.jordyn.amiibofinalproject.R;
 
-public class DrawerActivity extends Activity implements AdapterView.OnItemClickListener {
+public class DrawerActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private DrawerLayout drawerLayout;
     private String[] drawerItems;
@@ -33,6 +34,8 @@ public class DrawerActivity extends Activity implements AdapterView.OnItemClickL
 
 
         setContentView(R.layout.activity_drawer_layout);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerList = (ListView) findViewById(R.id.navigation_drawer);

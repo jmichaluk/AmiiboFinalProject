@@ -16,7 +16,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_another">AnotherActivity</string>
     <string name="title_activity_feed">Amiibo News</string>
-    <string name="title_activity_amiibos">AmiibosActivity</string>
+    <string name="title_activity_amiibos">Amiibos</string>
     <string name="title_activity_single_item">SingleItemActivity</string>
-    <string name="title_activity_games">GamesActivity</string>
+    <string name="title_activity_games">Games</string>
+    <string name="title_activity_signup">SignupActivity</string>
 </resources>
