@@ -22,7 +22,7 @@
             android:text="Username" />
 
         <EditText
-            android:id="@+id/login_username"
+            android:id="@+id/register_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -37,7 +37,7 @@
             android:text="Password:" />
 
         <EditText
-            android:id="@+id/login_password"
+            android:id="@+id/register_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -48,8 +48,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:onClick="login"
-            android:text="Log In!" />
+            android:onClick="register"
+            android:text="Sign Up" />
     </LinearLayout>
 
     <Button
@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="17sp"
-        android:onClick="showRegister"
-        android:text="Don't have an account? Sign up!" />
+        android:onClick="showLogin"
+        android:text="Already Have An Account? Log In!" />
 
 </LinearLayout>

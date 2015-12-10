@@ -68,7 +68,7 @@ public class AmiibosActivity extends DrawerActivity {
                         Amiibo map = new Amiibo();
                         map.setAmiiboImage(image.getUrl());
                         map.setName((String) amiibo.get("Name"));
-                        map.setAmiiboID((String) amiibo.get("objectID"));
+                        map.setAmiiboID((String) amiibo.getObjectId());
                         map.setDescription((String) amiibo.get("Description"));
                         amiiboArrayList.add(map);
                     } catch (NullPointerException e) {

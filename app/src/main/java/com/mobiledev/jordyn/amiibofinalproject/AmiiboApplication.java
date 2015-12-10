@@ -19,7 +19,7 @@ public class AmiiboApplication extends Application {
         super.onCreate();
         Parse.initialize(this, APPLICATION_ID, CLIENT_KEY);
 
-        ParseUser.enableAutomaticUser();
+//        ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
 
         defaultACL.setPublicReadAccess(true);

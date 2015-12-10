@@ -1,17 +1,23 @@
 package com.mobiledev.jordyn.amiibofinalproject.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mobiledev.jordyn.amiibofinalproject.Adapters.AmiiboAdapter;
 import com.mobiledev.jordyn.amiibofinalproject.ImageLoader;
+import com.mobiledev.jordyn.amiibofinalproject.Models.Amiibo;
+import com.mobiledev.jordyn.amiibofinalproject.Models.Game;
 import com.mobiledev.jordyn.amiibofinalproject.R;
 import com.parse.FindCallback;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -24,7 +30,13 @@ public class SingleItemActivity extends DrawerActivity {
     String name;
     String amiiboID;
     String description;
+    String gameID;
     ImageLoader imageLoader = new ImageLoader(this);
+
+    private GridView compatibleGrid;
+    private List<ParseObject> object;
+    private List<ParseObject> gameObject;
+    private List<Game> compatibleList = null;
 
 
     @Override
@@ -54,20 +66,7 @@ public class SingleItemActivity extends DrawerActivity {
         TextView descriptionView = (TextView) findViewById(R.id.amiibo_description);
         descriptionView.setText(description);
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("AmiiboGames");
-        query.whereEqualTo("amiiboID", amiiboID);
 
-        query.findInBackground(new FindCallback<ParseObject>() {
-
-            @Override
-            public void done(List<ParseObject> list, com.parse.ParseException e) {
-                if (e == null) {
-                    Log.d("JordynTest", "I think a game was found?");
-                } else {
-                    Log.e("JordynTest", "No games found... Something must be wrong.");
-                }
-            }
-        });
 
     }
 }

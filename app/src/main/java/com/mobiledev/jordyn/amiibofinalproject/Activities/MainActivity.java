@@ -1,5 +1,6 @@
 package com.mobiledev.jordyn.amiibofinalproject.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.mobiledev.jordyn.amiibofinalproject.R;
+import com.parse.ParseUser;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import io.fabric.sdk.android.Fabric;
@@ -31,6 +33,13 @@ public class MainActivity extends DrawerActivity {
         View activityView = layoutInflater.inflate(R.layout.activity_main, null, false);
 
         frameLayout.addView(activityView);
+
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if(currentUser == null) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override

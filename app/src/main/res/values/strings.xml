@@ -20,4 +20,9 @@
     <string name="title_activity_single_item">SingleItemActivity</string>
     <string name="title_activity_games">Games</string>
     <string name="title_activity_signup">SignupActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_owned">OwnedActivity</string>
+    <string name="title_activity_wishlist">WishlistActivity</string>
 </resources>

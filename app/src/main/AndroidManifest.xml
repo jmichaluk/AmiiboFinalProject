@@ -61,8 +61,20 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".Activities.SignupActivity"
-            android:label="@string/title_activity_signup" >
+            android:name=".Activities.LoginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".Activities.RegisterActivity"
+            android:label="@string/title_activity_register" >
+        </activity>
+        <activity
+            android:name=".Activities.OwnedActivity"
+            android:label="@string/title_activity_owned" >
+        </activity>
+        <activity
+            android:name=".Activities.WishlistActivity"
+            android:label="@string/title_activity_wishlist" >
         </activity>
     </application>
 

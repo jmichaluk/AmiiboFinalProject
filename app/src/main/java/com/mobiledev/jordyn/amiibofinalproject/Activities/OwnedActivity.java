@@ -7,18 +7,18 @@ import android.view.MenuItem;
 
 import com.mobiledev.jordyn.amiibofinalproject.R;
 
-public class SignupActivity extends AppCompatActivity {
+public class OwnedActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_owned);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_signup, menu);
+        getMenuInflater().inflate(R.menu.menu_owned, menu);
         return true;
     }
 
