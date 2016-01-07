@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 
 import com.mobiledev.jordyn.amiibofinalproject.R;
+import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -64,10 +65,11 @@ public class LoginActivity extends DrawerActivity {
         user.setUsername(mUsernameField.getText().toString());
         user.setPassword(mPasswordField.getText().toString());
 
-        user.signUpInBackground(new SignUpCallback() {
+        user.logInInBackground(mUsernameField.getText().toString(), mPasswordField.getText().toString(), new LogInCallback() {
+
             @Override
-            public void done(ParseException e) {
-                if (e ==  null) {
+            public void done(ParseUser parseUser, ParseException e) {
+                if (e == null) {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();

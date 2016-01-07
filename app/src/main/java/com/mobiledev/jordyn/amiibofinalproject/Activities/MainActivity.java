@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.mobiledev.jordyn.amiibofinalproject.R;
@@ -14,12 +15,13 @@ import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import io.fabric.sdk.android.Fabric;
 
-public class MainActivity extends DrawerActivity {
+public class MainActivity extends DrawerActivity implements View.OnClickListener {
 
     // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
     private static final String TWITTER_KEY = "wrEFHtpSubthLG0TwuuAYGaYH";
     private static final String TWITTER_SECRET = "s993lWEg2hRcyK3rwF1KbUZmry9rsAjyoWfdCjldTPIbHna06x";
 
+    Button mLogoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,9 @@ public class MainActivity extends DrawerActivity {
             startActivity(intent);
             finish();
         }
+
+        mLogoutButton = (Button) findViewById(R.id.logout);
+        mLogoutButton.setOnClickListener(this);
     }
 
     @Override
@@ -62,5 +67,13 @@ public class MainActivity extends DrawerActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+        ParseUser.logOut();
+        ParseUser user = ParseUser.getCurrentUser();
+        finish();
+        startActivity(getIntent());
     }
 }
