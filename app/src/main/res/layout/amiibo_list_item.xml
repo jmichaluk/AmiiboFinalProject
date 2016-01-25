@@ -4,6 +4,22 @@
     android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/img"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="Want"
+        android:textOff="Want"
+        android:layout_below="@id/img"
+        android:id="@+id/want_button"
+        android:checked="false" />
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOn="Own"
+        android:textOff="Own"
+        android:layout_toRightOf="@id/want_button"
+        android:layout_below="@id/img"
+        android:id="@+id/own_button"/>
 </RelativeLayout>

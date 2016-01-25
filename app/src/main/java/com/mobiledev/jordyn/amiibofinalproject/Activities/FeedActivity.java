@@ -16,6 +16,7 @@ import com.mobiledev.jordyn.amiibofinalproject.R;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
+import com.twitter.sdk.android.tweetui.TwitterListTimeline;
 import com.twitter.sdk.android.tweetui.UserTimeline;
 
 
@@ -44,9 +45,9 @@ public class FeedActivity extends DrawerActivity {
 
             ListView listView = (ListView) findViewById(R.id.twitter_feed);
 
-            UserTimeline userTimeline = new UserTimeline.Builder().screenName("amiiboNews").build();
+            TwitterListTimeline twitterList = new TwitterListTimeline.Builder().slugWithOwnerScreenName("amiibo-news", "JordynMichaluk").build();
             TweetTimelineListAdapter adapter = new TweetTimelineListAdapter.Builder(this)
-                    .setTimeline(userTimeline)
+                    .setTimeline(twitterList)
                     .build();
             listView.setAdapter(adapter);
         } else {
